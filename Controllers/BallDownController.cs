@@ -15,11 +15,11 @@ public class BallDownController : Controller
     [Route("/")]
     public IActionResult Index()
     {
-        double h = 1.0;
+        double h = 1;
         double g = 9.81;
 
         ViewBag.StraightTime = _getTimeService.CalculateStraightSlideTime(h, g).ToString();
-        ViewBag.ParabolaTime = _getTimeService.CalculateParabolicSlideTime(h, g).ToString();
+        ViewBag.ParabolaTime = _getTimeService.CalculateParabolicSlideTime(g).ToString();
 
         return View();
     }
