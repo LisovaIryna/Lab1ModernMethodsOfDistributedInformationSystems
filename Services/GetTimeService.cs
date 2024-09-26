@@ -5,14 +5,8 @@ namespace Lab1ModernMethodsOfDistributedInformationSystems.Services;
 public class GetTimeService : IGetTimeService
 {
     //Calculation of the time of movement of the ball along the straight line
-    public double CalculateStraightSlideTime(double h, double g)
-    {
-        double angle = Math.PI / 4; //45 degree
-        double l = h / Math.Sin(angle);
-        double v = Math.Sqrt(2 * g * h);
-
-        return 2 * l / v;
-    }
+    public double CalculateStraightSlideTime(double g) =>
+        2 / Math.Sqrt(g);
 
     //Calculation of the time of movement of the ball along the parabola
     public double CalculateParabolicSlideTime(double g) =>
