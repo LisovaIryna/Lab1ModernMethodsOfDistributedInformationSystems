@@ -15,11 +15,43 @@ public class BallDownController : Controller
     [Route("/")]
     public IActionResult Index()
     {
+        return View();
+    }
+
+    public IActionResult GetChartDataAndTimeResult()
+    {
+        double h = 1;
         double g = 9.81;
 
-        ViewBag.StraightTime = _getTimeService.CalculateStraightSlideTime(g).ToString();
-        ViewBag.ParabolaTime = _getTimeService.CalculateParabolicSlideTime(g).ToString();
+        double timeStraightLine = _getTimeService.CalculateStraightSlideTime(g);
+        double timeParabola = _getTimeService.CalculateParabolicSlideTime(g);
 
-        return View();
+        //Calculate data for chart
+        int points = 100;
+        double[] straightLinePoints = new double[points + 1];
+        double[] parabolaPoints = new double[points + 1];
+        string[] labels = new string[points + 1];
+        for (int i = 0; i < points; i++)
+        {
+            double fraction = (double)i / points;
+            straightLinePoints[i] = h * fraction;
+            parabolaPoints[i] = h * Math.Pow(fraction, 2);
+            labels[i] = fraction.ToString("F2");
+        }
+
+        //Data for chart
+        var chartData = new
+        {
+            labels,
+            straightLinePoints,
+            parabolaPoints,
+            time = new
+            {
+                timeStraightLine,
+                timeParabola
+            }
+        };
+
+        return Json(chartData);
     }
 }
