@@ -18,6 +18,7 @@ public class BallDownController : Controller
         return View();
     }
 
+    [Route("/BallDown/GetChartDataAndTimeResult")]
     public IActionResult GetChartDataAndTimeResult()
     {
         double h = 1;
@@ -31,7 +32,7 @@ public class BallDownController : Controller
         double[] straightLinePoints = new double[points + 1];
         double[] parabolaPoints = new double[points + 1];
         string[] labels = new string[points + 1];
-        for (int i = 0; i < points; i++)
+        for (int i = 0; i <= points; i++)
         {
             double fraction = (double)i / points;
             straightLinePoints[i] = h * fraction;

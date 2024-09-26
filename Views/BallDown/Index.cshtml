@@ -1,12 +1,29 @@
 ﻿<!DOCTYPE html>
 <html lang="uk">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lab1</title>
-    </head>
-    <body>
-        <h1>@ViewBag.StraightTime</h1>
-        <h1>@ViewBag.ParabolaTime</h1>
-    </body>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab1</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="Styles.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Графік руху кульки з гір</h1>
+    <canvas id="chart"></canvas>
+
+    <div class="resultPanel">
+        <button id="startButton">Запустити кульки та вивести результат</button>
+        <div class="result hidden">
+            <div id="timeDisplayStraightLine"></div>
+            <div id="timeDisplayParabola"></div>
+        </div>
+        <div class="note hidden">
+            * На графіку час спуску кульок в 7 разів повільніший, ніж у результаті.
+            Це зроблено для покращення наочності, оскільки в іншому випадку рух кульки відбувається занадто швидко
+            і різницю між спусками важко побачити.
+        </div>
+    </div>
+
+    <script src="chartScript.js"></script>
+</body>
 </html>
